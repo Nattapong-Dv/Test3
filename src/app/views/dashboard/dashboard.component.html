@@ -1,0 +1,93 @@
+<div class="animated fadeIn">
+  <div class="row" *ngFor="let data of DataAll | async">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-primary">
+          <div class="card-body pb-0">
+            <div class="text-value" style="font-size: 50px;">{{data.Temperature}} ℃</div>
+            <div>Temperature</div>
+          </div>
+          <br>
+          <br>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-info">
+          <div class="card-body pb-0">
+            <div class="text-value" style="font-size: 50px;">{{data.Humidity}} %</div>
+            <div>Humidity</div>
+          </div>
+          <br>
+          <br>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-warning">
+          <div class="card-body pb-0">
+            <div class="text-value" style="font-size: 50px;">{{data.PM10}} µg/m3</div>
+            <div>PM10</div>
+          </div>
+          <br>
+          <br>
+        </div>
+      </div><!--/.col-->
+    </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0">กราฟแสดงคุณภาพอากาศ</h4>
+          <div class="small text-muted">{{today | date:'medium'}}</div>
+        </div><!--/.col-->
+        <div class="col-sm-7 d-none d-md-block">
+          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
+            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Day" id="option1">วัน</label>
+            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Month" id="option2">เดือน</label>
+            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Year" id="option3">ปี</label>
+          </div>
+        </div><!--/.col-->
+      </div><!--/.row-->
+      <div class="chart-wrapper">
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row text-center">
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <strong>ดีมาก</strong>
+          <div class="text-muted">0 - 25</div>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <strong>ดี</strong>
+          <div class="text-muted">26 - 50</div>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <strong>ปานกลาง</strong>
+          <div class="text-muted">51 - 100</div>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <strong>เริ่มมีผลกระทบต่อสุขภาพ</strong>
+          <div class="text-muted">101 - 200</div>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <strong>มีผบกระทบต่อสุขภาพ</strong>
+          <div class="text-muted">201 ขึ้นไป</div>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

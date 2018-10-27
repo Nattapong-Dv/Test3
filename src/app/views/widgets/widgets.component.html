@@ -1,0 +1,14 @@
+<div class="animated fadeIn">
+  <div class="row" *ngFor="let data of DataAll | async">
+    <div class="col-sm-6 col-lg-12">
+      <div class="card text-white">
+        <div class="card-body pb-0">
+          <agm-map [latitude]="lat" [longitude]="lng" style="height:600px;">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+          <br>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div>
+</div>
